@@ -7,14 +7,14 @@ export default function Paper() {
 			width="100vw"
 			height="100vh"
 			colorBack="#000000"
-			colorPaper="#010101"
-			colorShadow="#222222"
+			colorPaper="#111118"
+			colorShadow="#000000"
 			blending={1}
 			distortion={0.45}
 			clip={false}
 			angle={300}
 			seed={374}
-			roughness={0.35}
+			roughness={0.95}
 			roughnessSize={0.25}
 			roughnessRows={0}
 			fiber={0.45}

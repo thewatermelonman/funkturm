@@ -1,25 +1,49 @@
 ---
+import { Image } from 'astro:assets';
 import FunkturmLogo from '../assets/funkturm_logo_weiß.svg';
 import NavBar from './NavBar.astro';
 import HamburgerMenu from './HamburgerMenu.astro';
+
+import stack from '../assets/stack_big.jpeg';
 ---
 
+<HamburgerMenu>
+	<NavBar></NavBar>
+</HamburgerMenu>
 <div id="container">
-	<HamburgerMenu>
-		<NavBar></NavBar>
-	</HamburgerMenu>
-	<div id="FunkturmLogo_container"><FunkturmLogo id="FunkturmLogo"/></div>
+	<div id="FunkturmLogo_container">
+		<a href="/">
+			<FunkturmLogo id="FunkturmLogo"/>
+		</a>
+	</div>
+	<div id="home_gallery">
+		<Image id="stack" src={stack} alt="Nonin"/>
+	</div>
 </div>
 
 <style>
 	#FunkturmLogo_container {
-		max-width: 40rem;
-		display: block;
+		max-width: min(20rem, 80vh);
 		margin: auto;
-		padding: 10rem 2rem 4rem 2rem;
+		width: 20rem;
+		/* padding: min(1.5rem, 20vh) 2rem 4rem 2rem; */
 	}
 
-	#FunkturmLogo  {
+	#home_gallery  {
+		mix-blend-mode: lighten;
 	}
+	#home_gallery > * {
+		width: 100vmin;
+		height: auto;
+		display: block;
+		margin: auto;
+	}
+	#container {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		height: 100%;
+	}
+
 
 </style>

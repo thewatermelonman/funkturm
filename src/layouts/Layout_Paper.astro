@@ -1,7 +1,6 @@
 ---
 
 import { Image, Font } from 'astro:assets';
-import stack from '../assets/stack.jpeg';
 import Paper from '../components/paper-shader/Paper.jsx';
 ---
 <!doctype html>
@@ -18,8 +17,6 @@ import Paper from '../components/paper-shader/Paper.jsx';
 	<body>
 		<div id="background" ><Paper client:load /></div>
 		<slot />
-		<!-- <div id="stack_container_l"><Image id="stack" src={stack} alt="Nonin"/></div> -->
-		<!-- <div id="stack_container_r"><Image id="stack" src={stack} alt="Nonin"/></div> -->
 	</body>
 </html>
 
@@ -29,15 +26,16 @@ import Paper from '../components/paper-shader/Paper.jsx';
 		margin: 0;
 		width: 100%;
 		height: 100%;
-		font-family: Helvetica;
+		/* background-color: #181828; */
+
 	}
 
 	#background {
 		position: fixed;
 		top: 0;
 		left: 0;
-		width: 100vw;
-		height: 100vh;
+		width: auto;
+		height: auto;
 		z-index: -1;
 	}
 
