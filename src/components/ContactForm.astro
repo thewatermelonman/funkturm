@@ -1,0 +1,65 @@
+---
+import Input from './astro-kit/Input.astro';
+import TextArea from './astro-kit/TextArea.astro';
+import Card from './astro-kit/Card.astro';
+import Button from './astro-kit/Button.astro';
+---
+<Card 
+	 	title="Get in Touch" 
+  		subtitle="Drop us a Message for rental inquiries" 
+		padding="lg" 
+	>
+<form action="">
+	<Input 
+	  id="name" 
+	  type="text"  
+	  label="Name" 
+	  placeholder='Your Name ...' 
+	  required
+	/>
+
+	<Input 
+	  id="email" 
+	  type="email"  
+	  label="Email" 
+	  placeholder='example@email.com' 
+	  required
+	/>
+
+	<Input 
+	  id="phone" 
+	  type="tel"  
+	  label="Phone Number" 
+	  placeholder='Phone Number .. ' 
+	/>
+
+	
+	<TextArea 
+	  id="info" 
+	  rows=3
+	  label="Further Information" 
+	  placeholder='Enter any relevant infromation.. ' 
+	  required
+	/>
+</form>
+	<div id="submit">
+		<Button size="lg">
+			<b>Send</b>
+		</Button>
+	</div>
+</Card>
+
+<style>
+	form {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+		margin: auto;
+	}
+
+	#submit {
+		padding-top: 1rem;
+		display: flex;	
+		justify-content: end;
+	}
+</style>

@@ -1,0 +1,44 @@
+---
+import HamburgerMenu from './custom/HamburgerMenu.astro';
+---
+
+<HamburgerMenu>
+	<div id='navbar'>
+		<a><h1>Sound System</h1></a>
+		<a><h1>References</h1></a>
+		<a href="/contact/"><h1>Contact</h1></a>
+	</div>
+</HamburgerMenu>
+
+<style>
+	#navbar {
+		max-width: 60rem;
+		margin: 30vmin auto;
+		color: white;
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: column;
+		padding: 1rem 1rem;
+		gap: 1rem;
+		justify-content: space-around;
+		font-size: 2.5vmin;
+		font-family: Helvetica;
+	}
+	a {
+		text-decoration: none;
+	}
+	#navbar > a > h1 {
+		color: #dddddd;
+		text-align: center;
+		letter-spacing: 0;
+		transition: letter-spacing 0.3s;
+	}
+
+	
+	#navbar > a > h1:hover {
+		text-decoration: none;
+		letter-spacing: 1px;
+		transition: letter-spacing 0.2s;
+	}
+
+</style>

@@ -1,15 +1,10 @@
 ---
 import { Image } from 'astro:assets';
 import FunkturmLogo from '../assets/funkturm_logo_weiß.svg';
-import NavBar from './NavBar.astro';
-import HamburgerMenu from './HamburgerMenu.astro';
-
+import Menu from './Menu.astro';
 import stack from '../assets/stack_big.jpeg';
 ---
-
-<HamburgerMenu>
-	<NavBar></NavBar>
-</HamburgerMenu>
+<Menu />
 <div id="container">
 	<div id="FunkturmLogo_container">
 		<a href="/">
@@ -34,6 +29,7 @@ import stack from '../assets/stack_big.jpeg';
 		mix-blend-mode: lighten;
 		opacity: 0.88;
 	}
+
 	#home_gallery > * {
 		width: 100vmin;
 		height: auto;
@@ -41,6 +37,7 @@ import stack from '../assets/stack_big.jpeg';
 		margin: auto;
 		margin-bottom: 1.5rem;
 	}
+	
 	#container {
 		display: flex;
 		flex-direction: column;
