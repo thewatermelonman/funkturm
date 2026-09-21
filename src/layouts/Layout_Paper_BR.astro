@@ -2,7 +2,7 @@
 
 import { Image, Font } from 'astro:assets';
 import stack from '../assets/stack.jpeg';
-import TvGrain from '../components/paper-shader/TvGrain.jsx';
+import Paper from '../components/paper-shader/Paper_bluered.jsx';
 ---
 <!doctype html>
 <html lang="en">
@@ -16,11 +16,10 @@ import TvGrain from '../components/paper-shader/TvGrain.jsx';
 		<title>Funkturm Soundsystem</title>
 	</head>
 	<body>
-		<div id="background" ><TvGrain client:load /></div>
-		<div id="background" ><TvGrain client:load /></div>
+		<div id="background" ><Paper client:load /></div>
 		<slot />
-		<div id="stack_container_l"><Image id="stack" src={stack} alt="Nonin"/></div>
-		<div id="stack_container_r"><Image id="stack" src={stack} alt="Nonin"/></div>
+		<!-- <div id="stack_container_l"><Image id="stack" src={stack} alt="Nonin"/></div> -->
+		<!-- <div id="stack_container_r"><Image id="stack" src={stack} alt="Nonin"/></div> -->
 	</body>
 </html>
 

@@ -1,10 +1,11 @@
 ---
-import DoubleButton from './DoubleButton.astro';
+import DoubleButton from './astro-kit/DoubleButton.astro';
+import MinimalPillButton from './astro-kit/MinimalPillButton.astro';
 const {item_name} = Astro.props;
 ---
 
 <div id='NavItem'>
-	<DoubleButton size="lg" variant='secondary'>{item_name}</DoubleButton>
+	<MinimalPillButton size="lg" variant='primary'>{item_name}</MinimalPillButton>
 </div>
 
 <style>
@@ -12,5 +13,17 @@ const {item_name} = Astro.props;
 		display: inline;
 		font-family: var(--font-nulshock);
 		padding-bottom: 2rem;
+	}
+
+	#NavItem > button {
+		background-color: transparent;
+		color: #ffffff;
+		font-family: var(--font-nulshock);
+		border-radius: 2px;
+		border-style: solid;
+	}
+
+	#NavItem > button:hover {
+		margin: 2px;
 	}
 </style>

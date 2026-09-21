@@ -6,9 +6,9 @@ export default function Paper() {
 		<PaperTexture
 			width="100vw"
 			height="100vh"
-			colorBack="#00ff00"
-			colorPaper="#ff0000"
-			colorShadow="#0000ff"
+			colorBack="#000000"
+			colorPaper="#010101"
+			colorShadow="#363636"
 			blending={1}
 			distortion={0.45}
 			clip={false}
@@ -29,7 +29,7 @@ export default function Paper() {
 			crumples={0.19}
 			crumpleCount={6}
 			drops={0}
-			scale={0.7}
+			scale={0.5}
 			fit="contain"
 		/>
 	);

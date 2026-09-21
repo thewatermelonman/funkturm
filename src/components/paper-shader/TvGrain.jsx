@@ -14,7 +14,7 @@ export default function TvGrain() {
 		  octaveCount={3}
 		  persistence={0.3}
 		  lacunarity={12.5}
-		  speed={0.2}
+		  speed={3.2}
 		  scale={0.08}
 		  rotation={96}
 		/>
