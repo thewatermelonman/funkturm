@@ -8,14 +8,14 @@ export default function Paper() {
 			height="100vh"
 			colorBack="#000000"
 			colorPaper="#111118"
-			colorShadow="#000000"
+			colorShadow="#040404"
 			blending={1}
 			distortion={0.45}
 			clip={false}
 			angle={300}
 			seed={374}
 			roughness={0.95}
-			roughnessSize={0.25}
+			roughnessSize={0.15}
 			roughnessRows={0}
 			fiber={0.45}
 			fiberSize={0.61}
@@ -29,7 +29,7 @@ export default function Paper() {
 			crumples={0.19}
 			crumpleCount={6}
 			drops={0}
-			scale={0.5}
+			scale={0.4}
 			fit="contain"
 		/>
 	);
