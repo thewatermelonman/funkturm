@@ -8,7 +8,7 @@ export default function Paper() {
 			height="100vh"
 			colorBack="#000000"
 			colorPaper="#010101"
-			colorShadow="#363636"
+			colorShadow="#222222"
 			blending={1}
 			distortion={0.45}
 			clip={false}

@@ -17,6 +17,7 @@
     "@astrojs/react": "^6.0.6",
     "@paper-design/shaders-react": "^0.0.81",
     "astro": "^7.3.3",
+    "astro-component-kit": "^0.3.1",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
     "vercel": "^59.23.2",
