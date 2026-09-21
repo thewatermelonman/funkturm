@@ -1,0 +1,16 @@
+---
+import DoubleButton from './DoubleButton.astro';
+const {item_name} = Astro.props;
+---
+
+<div id='NavItem'>
+	<DoubleButton size="lg" variant='secondary'>{item_name}</DoubleButton>
+</div>
+
+<style>
+	#NavItem {
+		display: inline;
+		font-family: var(--font-nulshock);
+		padding-bottom: 2rem;
+	}
+</style>

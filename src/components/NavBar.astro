@@ -1,0 +1,30 @@
+---
+import NavBarItem from './NavBarItem.astro';
+---
+
+<div id='navbar'>
+	<!-- <div id='divisor_line'></div> -->
+	<NavBarItem item_name="Sound System"/>
+	<NavBarItem item_name="References"/>
+</div>
+
+<style>
+	#navbar {
+		max-width: 40rem;
+		margin: auto;
+		color: white;
+		display: flex;
+		flex-wrap: wrap;
+		padding: 1rem 1rem;
+		gap: 1rem;
+		justify-content: space-around;
+	}
+
+	#divisor_line {
+		margin: 0 auto;
+		height: 0.1rem;
+		background: white;
+	}
+
+
+</style>
