@@ -1,7 +1,6 @@
 ---
 
 import { Image, Font } from 'astro:assets';
-import Paper from '../components/paper-shader/Paper.jsx';
 ---
 <!doctype html>
 <html lang="en">
@@ -20,7 +19,16 @@ import Paper from '../components/paper-shader/Paper.jsx';
 	</body>
 </html>
 
+
+<style lang="scss">
+    @use 'webcoreui/styles' as *;
+    @include setup((
+        fontRegular: '/fonts/Inter-Regular.woff2',
+        fontBold: '/fonts/Inter-Bold.woff2'
+    ));
+</style>
 <style>
+
 	html,
 	body {
 		margin: 0;

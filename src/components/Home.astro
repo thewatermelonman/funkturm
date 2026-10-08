@@ -3,7 +3,12 @@ import { Image } from 'astro:assets';
 import FunkturmLogo from '../assets/funkturm_logo_weiß.svg';
 import Menu from './Menu.astro';
 import stack from '../assets/stack_big.jpeg';
+import one from '../assets/one.jpeg';
+import two from '../assets/two.jpeg';
+import three from '../assets/three.jpeg';
+import { Carousel } from 'webcoreui/astro'
 ---
+
 <Menu />
 <div id="container">
 	<div id="FunkturmLogo_container">
@@ -11,27 +16,44 @@ import stack from '../assets/stack_big.jpeg';
 			<FunkturmLogo id="FunkturmLogo"/>
 		</a>
 	</div>
-	<div id="home_gallery">
+	<div id="carousel">
+		<Carousel  items={3} itemsPerSlide={2} pagination={{ type: 'dots' }}>
+			<li><Image class="image" id="one" src={one} alt="Nonin"/></li>
+			<li><Image class="image" id="two" src={two} alt="Nonin"/></li>
+			<li><Image class="image" id="three" src={three} alt="Nonin"/></li>
+		</Carousel>
+	</div>
+	<div id="funkturm_stack">
 		<Image id="stack" src={stack} alt="Nonin"/>
 	</div>
 </div>
 
 <style>
 	#FunkturmLogo_container {
-		max-width: min(20rem, 80vh);
+		max-width: 20vh;
 		margin: 1.5rem auto;
 		width: 70vmin;
 		padding: 0 2rem;
 		/* padding: min(1.5rem, 20vh) 2rem 4rem 2rem; */
 	}
 
-	#home_gallery  {
+	#carousel {
+		width: min(80vmin);
+		margin: 0 auto;
+	}
+
+	.image {
+		display: block;
+		width: auto;
+		height: 20vmin;	
+	}
+	#funkturm_stack  {
 		mix-blend-mode: lighten;
 		opacity: 0.88;
 	}
 
-	#home_gallery > * {
-		width: 100vmin;
+	#funkturm_stack > * {
+		width: min(100vmin, 60vh);
 		height: auto;
 		display: block;
 		margin: auto;

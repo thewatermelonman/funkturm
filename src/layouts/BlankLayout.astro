@@ -29,3 +29,10 @@ import { Font } from 'astro:assets';
 	}
 
 </style>
+<style lang="scss">
+    @use 'webcoreui/styles' as *;
+    @include setup((
+        fontRegular: '/fonts/Inter-Regular.woff2',
+        fontBold: '/fonts/Inter-Bold.woff2'
+    ));
+</style>

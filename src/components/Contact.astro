@@ -5,9 +5,9 @@ import MiniLogo from './MiniLogo.astro';
 import ContactForm from './ContactForm.astro';
 ---
 
+<Menu />
 <div id="contact_container">
-	<Menu />
-	<MiniLogo />
+	<div><MiniLogo /></div>
 	<div id="contact_card">
 		<Card title="Contact" padding="lg">
 			<h3>Email</h3>
@@ -18,14 +18,10 @@ import ContactForm from './ContactForm.astro';
 	<div id="form_card">
 		<ContactForm />	
 	</div>
-
-	<div id="placeholder_1">
-	</div>
 </div>
 
 
 <style>
-
 	#contact_container {
 		width: 80vmin;
 		min-width: 12rem;
@@ -47,9 +43,5 @@ import ContactForm from './ContactForm.astro';
 	#form_card {
 		font-family: Helvetica;
 		padding-top: 2rem;
-	}
-
-	#placeholder_1 {
-		height: 4rem;
 	}
 </style>

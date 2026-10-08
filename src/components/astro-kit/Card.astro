@@ -16,9 +16,9 @@ const { title, subtitle, hoverable = true, padding = 'md' } = Astro.props;
 </div>
 <style>
 	.glass-card { 
-		background: rgba(255, 255, 255, 0.04); 
+		background: rgba(255, 255, 255, 0.0); 
 		backdrop-filter: blur(16px); 
-		border: 2px solid rgba(255, 255, 255, 0.09); 
+		border: 2px solid rgba(255, 255, 255, 0.1); 
 		border-radius: 2px; 
 		position: relative; 
 		overflow: hidden; 
@@ -29,8 +29,8 @@ const { title, subtitle, hoverable = true, padding = 'md' } = Astro.props;
 		top: 0; 
 		left: 0; 
 		right: 0; 
-		height: 1px; 
-		background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); 
+		height: 0px; 
+		background: linear-gradient(90deg, white, rgba(255,255,255,0.2), white); 
 	}
 	.glass-card--hoverable:hover { transform: translateY(1px);
 		box-shadow: 0 20px 60px #121212; 
