@@ -3,6 +3,7 @@ import Card from './astro-kit/Card.astro';
 import Menu from './Menu.astro';
 import MiniLogo from './MiniLogo.astro';
 import ContactForm from './ContactForm.astro';
+import Socials from '@blocks/Socials/Socials.astro'
 ---
 
 <Menu />
@@ -11,7 +12,15 @@ import ContactForm from './ContactForm.astro';
 	<div id="contact_card">
 		<Card title="Contact" padding="lg">
 			<h3>Email</h3>
-			<h3>Mobil</h3>
+			<div id="social_line">
+				<div><Socials links={['mailto:funkturm@gmail.com']} size={32} color="#fff"/></div>
+					<div> <h4>funkturm.wien@gmail.com</h4> </div>
+			</div>
+			<h3>Social</h3>
+			<div id="social_line">
+				<div><Socials links={['https://instagram.com/funkturm.wien']} size={32} color="#fff"/></div>
+				<div><h4>@funkturm.wien</h4></div>
+			</div>
 			<h3></h3>
 		</Card>
 	</div>
@@ -34,6 +43,13 @@ import ContactForm from './ContactForm.astro';
 		margin: auto;
 	}
 
+	#social_line {
+		display: flex;
+	}
+
+	#social_line > div > h4{
+		margin: 0.2rem 1.2rem;
+	}
 	form {
 		display: flex;
 		flex-direction: column;

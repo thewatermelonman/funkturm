@@ -34,6 +34,11 @@ const {
   data-carousel
   style={`--per-view-wide:${perView};--gap:${gap}`}
 >
+  <button class="nav prev" type="button" aria-label="Previous images" data-prev>
+    <svg viewBox="0 0 34 74" width="40" height="100" aria-hidden="true">
+      <path d="M15 5l-7 7 7 7" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  </button>
   <ul class="track" tabindex="0" data-track>
     {
       images.map((img, i) => (
@@ -50,20 +55,16 @@ const {
     }
   </ul>
 
-  <button class="nav prev" type="button" aria-label="Previous images" data-prev>
-    <svg viewBox="0 0 24 24" width="10" height="10" aria-hidden="true">
-      <path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-    </svg>
-  </button>
   <button class="nav next" type="button" aria-label="Next images" data-next>
-    <svg viewBox="0 0 24 24" width="10" height="10" aria-hidden="true">
-      <path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    <svg viewBox="10 0 34 74" width="40" height="100" aria-hidden="true">
+      <path d="M9 5l7 7-7 7" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
     </svg>
   </button>
 </div>
 
 <style>
   .carousel {
+	  display: flex;
     --pv: var(--per-view-wide);
     position: relative;
     /* Fills whatever container it sits in. The container needs a height. */
@@ -111,25 +112,28 @@ const {
   }
 
   .nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    display: grid;
-    place-items: center;
+    /* position: absolute; */
+    /* top: 50%; */
+    /* transform: translateY(-50%); */
+    display: block;
+	margin: auto 1.2rem;
     width: 1.2rem;
     height: 1.2rem;
     padding: 0;
-    border: 1px solid rgb(0 0 0 / 0.15);
-    border-radius: 50%;
-    background: var(--carousel-btn-bg, #fff);
+	border-style: none;
+	background: transparent;
     color: var(--carousel-btn-fg, #111);
     cursor: pointer;
   }
   .nav[hidden] { display: none; }
   .nav:disabled { opacity: 0.35; cursor: default; }
   .nav:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
-  .prev { left: 0.5rem; }
-  .next { right: 0.5rem; }
+  .prev { 
+	  left: 0.5rem; 
+  }
+  .next { 
+	  right: 0.5rem; 
+  }
 </style>
 
 <script>
