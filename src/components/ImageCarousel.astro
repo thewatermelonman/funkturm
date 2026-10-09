@@ -1,0 +1,165 @@
+---
+import { Image } from "astro:assets";
+
+interface Slide {
+  src: ImageMetadata;
+  alt?: string;
+}
+
+interface Props {
+  images: Slide[];
+  /** Images visible at once on wide screens. Drops to 2 under 900px and 1 under 600px. */
+  perView?: number;
+  /** Any CSS length. */
+  gap?: string;
+  /** Tell the browser how wide each image renders, so it can pick a srcset entry. */
+  sizes?: string;
+  label?: string;
+}
+
+const {
+  images,
+  perView = 2,
+  gap = "1rem",
+  sizes = "(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw",
+  label = "Image carousel",
+} = Astro.props;
+---
+
+<div
+  class="carousel"
+  role="region"
+  aria-roledescription="carousel"
+  aria-label={label}
+  data-carousel
+  style={`--per-view-wide:${perView};--gap:${gap}`}
+>
+  <ul class="track" tabindex="0" data-track>
+    {
+      images.map((img, i) => (
+        <li class="slide">
+          <Image
+            src={img.src}
+            alt={img.alt ?? ""}
+            widths={[400, 800, 1200]}
+            sizes={sizes}
+            loading={i < perView ? "eager" : "lazy"}
+          />
+        </li>
+      ))
+    }
+  </ul>
+
+  <button class="nav prev" type="button" aria-label="Previous images" data-prev>
+    <svg viewBox="0 0 24 24" width="10" height="10" aria-hidden="true">
+      <path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  </button>
+  <button class="nav next" type="button" aria-label="Next images" data-next>
+    <svg viewBox="0 0 24 24" width="10" height="10" aria-hidden="true">
+      <path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  </button>
+</div>
+
+<style>
+  .carousel {
+    --pv: var(--per-view-wide);
+    position: relative;
+    /* Fills whatever container it sits in. The container needs a height. */
+    height: 100%;
+    min-height: 0;
+  }
+    @media (max-width: 900px) {
+    .carousel { --pv: min(2, var(--per-view-wide)); }
+  }
+  @media (max-width: 600px) {
+    .carousel { --pv: 1; }
+  }
+
+
+  .track {
+    display: flex;
+    gap: var(--gap);
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+  .track::-webkit-scrollbar { display: none; }
+  .track:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  }
+
+  .slide {
+    flex: 0 0 calc((100% - var(--gap) * (var(--pv) - 1)) / var(--pv));
+    height: 100%;
+    scroll-snap-align: start;
+  }
+
+  /* <Image> output isn't scoped, so reach it with :global */
+  .slide :global(img) {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: grid;
+    place-items: center;
+    width: 1.2rem;
+    height: 1.2rem;
+    padding: 0;
+    border: 1px solid rgb(0 0 0 / 0.15);
+    border-radius: 50%;
+    background: var(--carousel-btn-bg, #fff);
+    color: var(--carousel-btn-fg, #111);
+    cursor: pointer;
+  }
+  .nav[hidden] { display: none; }
+  .nav:disabled { opacity: 0.35; cursor: default; }
+  .nav:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+  .prev { left: 0.5rem; }
+  .next { right: 0.5rem; }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-carousel]").forEach((root) => {
+    const track = root.querySelector<HTMLElement>("[data-track]")!;
+    const prev = root.querySelector<HTMLButtonElement>("[data-prev]")!;
+    const next = root.querySelector<HTMLButtonElement>("[data-next]")!;
+    const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)");
+
+    // One page = the visible width plus one gap, which lands exactly on a slide edge.
+    const pageSize = () =>
+      track.clientWidth + (parseFloat(getComputedStyle(track).columnGap) || 0);
+
+    const go = (dir: 1 | -1) =>
+      track.scrollBy({
+        left: dir * pageSize(),
+        behavior: reduceMotion.matches ? "auto" : "smooth",
+      });
+
+    const update = () => {
+      const max = track.scrollWidth - track.clientWidth;
+      prev.hidden = next.hidden = max <= 1;
+      prev.disabled = track.scrollLeft <= 1;
+      next.disabled = track.scrollLeft >= max - 1;
+    };
+
+    prev.addEventListener("click", () => go(-1));
+    next.addEventListener("click", () => go(1));
+    track.addEventListener("scroll", update, { passive: true });
+    new ResizeObserver(update).observe(track);
+    update();
+  });
+</script>

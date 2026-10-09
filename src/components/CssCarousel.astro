@@ -1,0 +1,58 @@
+---
+import { Image } from 'astro:assets';
+import one from 	'../assets/home_gallery/one.jpeg';
+import two from 	'../assets/home_gallery/two.jpeg';
+import three from 	'../assets/home_gallery/three.jpeg';
+---
+<div id="happy_carousel">
+	<div id="hc_group">
+		<div class="card"> <Image class="images" id="one" src={one} alt="Nonin"/> </div>
+		<div class="card"> <Image class="images" id="two" src={two} alt="Nonin"/> </div>
+		<div class="card"> <Image class="images" id="three" src={three} alt="Nonin"/> </div>
+	</div>
+	<div aria-hidden id="hc_group">
+		<div class="card"> <Image class="images" id="one" src={one} alt="Nonin"/> </div>
+		<div class="card"> <Image class="images" id="two" src={two} alt="Nonin"/> </div>
+		<div class="card"> <Image class="images" id="three" src={three} alt="Nonin"/> </div>
+	</div>
+</div>
+
+<style>
+	#happy_carousel {
+		overflow-x: auto;
+		display: flex;
+		height: 100%;
+
+		-ms-overflow-style: none;
+  		scrollbar-width: none;
+	}
+	#happy_carousel::-webkit-scrollbar {
+		display: none;
+	}
+
+	#hc_group {
+		display: flex;
+		gap: 1.2rem;
+
+		animation: spin 50s infinite linear;
+		padding-right: 1.2rem;
+	}
+	
+	.card {
+		flex: 0 0 auto;
+		height: 100%
+	}
+	.images {
+		aspect-ratio: 4 / 3;
+		height: 100%;
+		width: 100%;
+		display: block;
+		object-fit: cover;
+	}
+
+	@keyframes spin {
+		from {translate: 0;}
+		to {translate: -100%;}
+	}
+</style>
+

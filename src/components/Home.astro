@@ -2,12 +2,15 @@
 import { Image } from 'astro:assets';
 import FunkturmLogo from '../assets/funkturm_logo_weiß.svg';
 import Menu from './Menu.astro';
+import  HomeImages  from './HomeImages.astro';
+import  HappyCarousel  from './CssCarousel.astro';
+import  ImageCarousel  from './ImageCarousel.astro';
 import stack from '../assets/stack_big.jpeg';
-import one from '../assets/one.jpeg';
-import two from '../assets/two.jpeg';
-import three from '../assets/three.jpeg';
-import { Carousel} from 'webcoreui/astro'
 import Socials from '@blocks/Socials/Socials.astro'
+
+const images = Object.entries(
+  import.meta.glob<{ default: ImageMetadata }>("../assets/home_gallery/*.{jpeg,png,webp}", { eager: true })
+).map(([path, m]) => ({ src: m.default, alt: "" }));
 ---
 
 <Menu />
@@ -15,88 +18,106 @@ import Socials from '@blocks/Socials/Socials.astro'
 	<Socials links={['https://instagram.com/funkturm.wien']} size={32} color="#fff"/>
 </div>
 <div id="container">
-		<div id="FunkturmLogo_container">
-			<a href="/">
-				<FunkturmLogo id="FunkturmLogo"/>
-			</a>
-		</div>
-	<div id="center">
-		<div id="carousel">
-			<Carousel  items={0} itemsPerSlide={2} pagination={{ type: 'dots' }}>
-			<li><Image class="image" id="one" src={one} alt="Nonin"/></li>
-				<li><Image class="image" id="two" src={two} alt="Nonin"/></li>
-				<li><Image class="image" id="three" src={three} alt="Nonin"/></li>
-			</Carousel>
-		</div>
-		<p id="description">
-		Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-		Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley.
-		</p>
+	<div id="spacer"> </div>
+	<div id="logo_container">
+		<a href="/">
+			<FunkturmLogo id="FunkturmLogo"/>
+		</a>
 	</div>
-	<div id="funkturm_stack">
+	<div id="text_container">
+		<p id="description"> Sound System </p>
+	</div>
+	<div id="filler"> </div>
+	<div id="carousel_container">
+			<!-- <HappyCarousel />  -->
+		<!-- <HomeImages /> -->
+		<ImageCarousel images={images}/>
+	</div>
+	<div id="filler"> </div>
+	<div id="stack_container">
 		<Image id="stack" src={stack} alt="Nonin"/>
 	</div>
 </div>
 
 <style>
 	#socials {
-		position: absolute;
+		position: fixed;
 		margin: 1.2rem;
-	}
-	#FunkturmLogo_container {
-		max-width: 20vh;
-		margin: 1.5rem auto;
-		width: 70vmin;
-		padding: 0 2rem;
-		/* padding: min(1.5rem, 20vh) 2rem 4rem 2rem; */
-	}
-
-	#center {
-		display: flex;
-		flex-direction: column;
-		flex-wrap: wrap;
-		margin: 1rem;
-		padding: 2rem;
-	}
-	
-	#description {
-		width: 70vmin;
-		height: 10vh;
-		margin: 0 auto;
-		margin-top: 2rem;
-		text-align: center;
-	}
-
-	#carousel {
-		flex-grow: 1;
-		width: 80vmin;
-		margin: 0 auto;
-	}
-
-	.image {
-		display: block;
-		width: auto;
-		height: 20vmin;	
-	}
-	#funkturm_stack  {
-		mix-blend-mode: lighten;
-		opacity: 0.88;
-	}
-
-	#funkturm_stack > * {
-		width: min(100vmin, 60vh);
-		height: auto;
-		display: block;
-		margin: auto;
-		margin-bottom: 1.5rem;
 	}
 	
 	#container {
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
-		height: 100%;
+		height: 100vh;
+		height: 100dvh;
+
+		background: radial-gradient(circle at top, #131013, #070707);;
 	}
+
+	#spacer {
+		flex: 0 0 4rem;
+	}
+
+
+	#logo_container {
+		flex: 0 0 auto;
+		margin: 0 auto;
+		padding: 0 2rem;
+		/* padding: min(1.5rem, 20vh) 2rem 4rem 2rem; */
+	}
+
+	#carousel_container {
+		flex: 1 1 0;
+		margin: 0 auto;
+		max-width: 80vmin;
+		min-height: 20vh;
+	}
+  	@media (max-width: 700px) {
+		#carousel_container {
+			max-height: 30vh;
+		}
+	}
+
+	#FunkturmLogo {
+		width: 100%;
+		max-width: 60vmin;
+		height: auto;
+	}
+
+	#text_container {
+		flex: 0 0 auto;
+	}
+
+	#filler {
+		flex: 1 1 0;      /* grows into all leftover space */
+		min-height: 0;
+	}
+
+	#description {
+		width: 80vmin;
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	#stack_container  {
+		flex: 0 1 auto;
+		min-height: 0;
+		width: 100%;
+		max-width: 100vmin;
+		margin: auto;
+		mix-blend-mode: lighten;
+		opacity: 0.88;
+	}
+
+	#stack_container > * {
+		width: 100%;
+		height: auto;
+		margin: auto;
+		object-fit: contain;
+	}
+	
+
 
 
 </style>

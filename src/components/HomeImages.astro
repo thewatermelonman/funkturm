@@ -1,0 +1,35 @@
+---
+import { Splide, SplideSlide } from 'astro-splide';
+import one from 	'../assets/home_gallery/one.jpeg';
+import two from 	'../assets/home_gallery/two.jpeg';
+import three from 	'../assets/home_gallery/three.jpeg';
+---
+<Splide
+  class='not-content'
+  options={ {
+	perPage: 2,
+    type: 'loop',
+    interval: 3000,
+    autoplay: true,
+		gap: '1rem',
+    pauseOnHover: true,
+	height       : '15rem',
+  } }
+>
+<SplideSlide class="splideSlide"> <img  id="one" src={one.src} alt="Nonin"/> </SplideSlide>
+<SplideSlide class="splideSlide"> <img id="two" src={two.src} alt="Nonin"/> </SplideSlide>
+<SplideSlide class="splideSlide"> <img id="three" src={three.src} alt="Nonin"/> </SplideSlide>
+</Splide>
+<style>
+	.splide {
+		height: 100%;
+		display: flex;
+	}
+	.splideSlide :global(img) {
+		aspect-ratio: 4 / 3;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+	}
+</style>
